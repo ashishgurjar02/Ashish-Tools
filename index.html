@@ -1,0 +1,13 @@
+<h1>Ashish Age Calculator</h1>
+<input type="date" id="dob">
+<button onclick="calc()">Check</button>
+<p id="res"></p>
+
+<script>
+function calc(){
+let d=new Date(document.getElementById("dob").value);
+let t=new Date();
+let a=t.getFullYear()-d.getFullYear();
+document.getElementById("res").innerHTML="Age: "+a;
+}
+</script>
