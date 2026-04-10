@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Discount Calculator</title>
+</head>
+<body style="text-align:center">
+
+<h1>Discount Calculator</h1>
+
+<input type="number" id="price" placeholder="Original Price">
+<br><br>
+
+<input type="number" id="discount" placeholder="Discount %">
+<br><br>
+
+<button onclick="calc()">Calculate</button>
+
+<p id="res"></p>
+
+<script>
+function calc(){
+let p=document.getElementById("price").value;
+let d=document.getElementById("discount").value;
+
+let final = p - (p*d/100);
+
+document.getElementById("res").innerHTML="Final Price: "+final;
+}
+</script>
+
+</body>
+</html>
