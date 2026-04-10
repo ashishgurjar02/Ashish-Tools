@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Currency Converter</title>
+</head>
+<body style="text-align:center">
+
+<h1>Currency Converter</h1>
+
+<input type="number" id="inr" placeholder="Enter INR">
+<br><br>
+
+<button onclick="convert()">Convert</button>
+
+<p id="res"></p>
+
+<script>
+function convert(){
+let i = document.getElementById("inr").value;
+
+let usd = i / 83;
+let eur = i / 90;
+
+document.getElementById("res").innerHTML =
+"USD: " + usd.toFixed(2) + "<br>EUR: " + eur.toFixed(2);
+}
+</script>
+
+</body>
+</html>
