@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Handwriting Generator</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>✍️ Handwriting Generator</h1>
+
+<textarea id="text" rows="6" cols="40" placeholder="Type your text..."></textarea>
+
+<br><br>
+
+<select id="font">
+<option value="'Comic Sans MS', cursive">Handwriting Style 1</option>
+<option value="'Brush Script MT', cursive">Handwriting Style 2</option>
+<option value="'Segoe Script', cursive">Handwriting Style 3</option>
+</select>
+
+<br><br>
+
+<button onclick="generate()">Generate</button>
+
+<br><br>
+
+<div id="output" style="border:1px solid black; padding:10px;"></div>
+
+<script>
+function generate(){
+let text = document.getElementById("text").value;
+let font = document.getElementById("font").value;
+
+let output = document.getElementById("output");
+
+output.style.fontFamily = font;
+output.style.fontSize = "24px";
+output.innerText = text;
+}
+</script>
+
+</body>
+</html>
