@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Location to QR Code | Ashish Tools</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>📍 Location to QR Code</h1>
+
+<button onclick="getLocation()">Get My Location</button>
+
+<br><br>
+
+<p id="coords"></p>
+
+<br><br>
+
+<img id="qr" style="display:none">
+
+<br><br>
+
+<button onclick="download()">Download QR</button>
+
+<script>
+let qrUrl = "";
+
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+let lat = position.coords.latitude;
+let lon = position.coords.longitude;
+
+let locationLink = "https://maps.google.com/?q=" + lat + "," + lon;
+
+document.getElementById("coords").innerHTML =
+"📍 " + lat + ", " + lon;
+
+// generate QR
+qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + locationLink;
+
+let qr = document.getElementById("qr");
+qr.src = qrUrl;
+qr.style.display = "block";
+
+});
+
+}else{
+alert("Location not supported");
+}
+
+}
+
+function download(){
+
+if(qrUrl == ""){
+alert("Generate QR first");
+return;
+}
+
+let a = document.createElement("a");
+a.href = qrUrl;
+a.download = "location-qr.png";
+a.click();
+
+}
+</script>
+
+</body>
+</html>
