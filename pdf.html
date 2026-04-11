@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Image to PDF Converter | Ashish Tools</title>
+<title>Advanced PDF Tool | Ashish Tools</title>
 </head>
 
 <body style="font-family:sans-serif; text-align:center">
 
-<h1>📄 Image to PDF Tool</h1>
+<h1>📄 Advanced Image to PDF Tool</h1>
 
-<p>Select Images (multiple allowed):</p>
+<p>Select Multiple Images</p>
 
 <input type="file" id="files" multiple accept="image/*">
 
 <br><br>
 
-<button onclick="makePDF()">Create PDF</button>
+<button onclick="createPDF()">Create PDF</button>
 
 <p id="msg"></p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-async function makePDF(){
+async function createPDF(){
 const { jsPDF } = window.jspdf;
-
-let pdf = new jsPDF();
 
 let files = document.getElementById("files").files;
 
-if(files.length == 0){
+if(files.length === 0){
 document.getElementById("msg").innerHTML = "Please select images";
 return;
 }
 
+let pdf = new jsPDF("p", "mm", "a4");
+
 for(let i=0;i<files.length;i++){
+
 let file = files[i];
 
 let imgData = await new Promise(resolve=>{
@@ -42,16 +43,18 @@ reader.onload = e => resolve(e.target.result);
 reader.readAsDataURL(file);
 });
 
+// add new page after first
 if(i > 0){
 pdf.addPage();
 }
 
-pdf.addImage(imgData, "JPEG", 10, 10, 180, 160);
+// A4 size fit
+pdf.addImage(imgData, "JPEG", 10, 10, 190, 270);
 }
 
 pdf.save("ashish-tools.pdf");
 
-document.getElementById("msg").innerHTML = "PDF Downloaded Successfully!";
+document.getElementById("msg").innerHTML = "PDF Created Successfully ✔️";
 }
 </script>
 
