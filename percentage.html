@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Percentage Calculator Online | Ashish Tools</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>Percentage Calculator</h1>
+
+<p>Enter Marks Obtained:</p>
+<input type="number" id="marks">
+
+<p>Enter Total Marks:</p>
+<input type="number" id="total">
+
+<br><br>
+
+<button onclick="calc()">Calculate</button>
+
+<p id="result"></p>
+
+<script>
+function calc(){
+let m = document.getElementById("marks").value;
+let t = document.getElementById("total").value;
+
+if(m=="" || t==""){
+document.getElementById("result").innerHTML="Please enter values";
+return;
+}
+
+let percent = (m / t) * 100;
+
+document.getElementById("result").innerHTML = "Percentage: " + percent.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
