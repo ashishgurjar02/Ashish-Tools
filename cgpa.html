@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CGPA Calculator</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>🎓 CGPA Calculator</h1>
+
+<input type="number" id="marks" placeholder="Enter Total Marks"><br><br>
+
+<button onclick="calc()">Calculate CGPA</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calc(){
+let marks = document.getElementById("marks").value;
+
+if(marks==""){
+document.getElementById("result").innerHTML="Enter marks";
+return;
+}
+
+let cgpa = (marks/10).toFixed(2);
+
+document.getElementById("result").innerHTML = "CGPA: " + cgpa;
+}
+</script>
+
+</body>
+</html>
