@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BMI Calculator Free Online | Ashish Tools</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>BMI Calculator</h1>
+
+<p>Enter Weight (kg):</p>
+<input type="number" id="weight">
+
+<p>Enter Height (meters):</p>
+<input type="number" step="0.01" id="height">
+
+<br><br>
+
+<button onclick="calcBMI()">Calculate BMI</button>
+
+<p id="result"></p>
+
+<script>
+function calcBMI(){
+let w = document.getElementById("weight").value;
+let h = document.getElementById("height").value;
+
+if(w=="" || h==""){
+document.getElementById("result").innerHTML="Please enter values";
+return;
+}
+
+let bmi = w / (h * h);
+
+let status = "";
+
+if(bmi < 18.5){
+status = "Underweight";
+}
+else if(bmi < 25){
+status = "Normal";
+}
+else if(bmi < 30){
+status = "Overweight";
+}
+else{
+status = "Obese";
+}
+
+document.getElementById("result").innerHTML =
+"BMI: " + bmi.toFixed(2) + " (" + status + ")";
+}
+</script>
+
+</body>
+</html>
