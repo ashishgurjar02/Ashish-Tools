@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live Cricket Score | Ashish Tools</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>🏏 Live Cricket Score</h1>
+
+<button onclick="getScore()">Refresh Score</button>
+
+<div id="result" style="margin-top:20px;"></div>
+
+<script>
+
+async function getScore(){
+
+try{
+
+let res = await fetch("https://api.cricapi.com/v1/currentMatches?apikey=demo");
+let data = await res.json();
+
+let matches = data.data;
+
+let html = "";
+
+matches.forEach(match => {
+
+html += "<h3>" + match.name + "</h3>";
+html += "<p>Status: " + match.status + "</p>";
+
+if(match.score && match.score.length > 0){
+match.score.forEach(s=>{
+html += "<p>" + s.inning + ": " + s.r + "/" + s.w + " (" + s.o + " overs)</p>";
+});
+}
+
+html += "<hr>";
+
+});
+
+document.getElementById("result").innerHTML = html;
+
+}catch{
+
+document.getElementById("result").innerHTML = "⚠️ Error loading live score";
+
+}
+
+}
+
+// auto load on page open
+getScore();
+
+// auto refresh every 20 sec
+setInterval(getScore, 20000);
+
+</script>
+
+</body>
+</html>
