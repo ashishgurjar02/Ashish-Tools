@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Free Age Calculator Online | Ashish Tools</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>Age Calculator</h1>
+
+<p>Enter your Date of Birth:</p>
+
+<input type="date" id="dob">
+<br><br>
+
+<button onclick="calcAge()">Calculate Age</button>
+
+<p id="result"></p>
+
+<script>
+function calcAge(){
+let dob = document.getElementById("dob").value;
+
+if(dob === ""){
+document.getElementById("result").innerHTML = "Please select date";
+return;
+}
+
+let birth = new Date(dob);
+let today = new Date();
+
+let age = today.getFullYear() - birth.getFullYear();
+
+let m = today.getMonth() - birth.getMonth();
+
+if(m < 0 || (m === 0 && today.getDate() < birth.getDate())){
+age--;
+}
+
+document.getElementById("result").innerHTML = "Your Age is: " + age + " years";
+}
+</script>
+
+</body>
+</html>
