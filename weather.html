@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather Tool | Ashish Tools</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>🌦 Weather Tool</h1>
+
+<input type="text" id="city" placeholder="Enter city name">
+
+<br><br>
+
+<button onclick="getWeather()">Check Weather</button>
+
+<h2 id="result"></h2>
+
+<script>
+async function getWeather(){
+
+let city = document.getElementById("city").value;
+
+if(city==""){
+document.getElementById("result").innerHTML="Enter city";
+return;
+}
+
+let url = "https://wttr.in/" + city + "?format=3";
+
+let res = await fetch(url);
+let data = await res.text();
+
+document.getElementById("result").innerHTML = data;
+
+}
+</script>
+
+</body>
+</html>
