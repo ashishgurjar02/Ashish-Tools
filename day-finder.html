@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date to Day Finder | Ashish Tools</title>
+</head>
+
+<body style="font-family:sans-serif; text-align:center">
+
+<h1>📅 Date to Day Finder</h1>
+
+<p>Select Date:</p>
+<input type="date" id="date">
+
+<br><br>
+
+<button onclick="findDay()">Find Day</button>
+
+<h2 id="result"></h2>
+
+<script>
+function findDay(){
+
+let dateInput = document.getElementById("date").value;
+
+if(dateInput == ""){
+document.getElementById("result").innerHTML = "Select a date";
+return;
+}
+
+let date = new Date(dateInput);
+
+let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+let dayName = days[date.getDay()];
+
+document.getElementById("result").innerHTML = "Day: " + dayName;
+
+}
+</script>
+
+</body>
+</html>
