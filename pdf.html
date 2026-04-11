@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image to PDF Converter | Ashish Tools</title>
+</head>
+
+<body style="font-family:sans-serif; text-align:center">
+
+<h1>📄 Image to PDF Tool</h1>
+
+<p>Select Images (multiple allowed):</p>
+
+<input type="file" id="files" multiple accept="image/*">
+
+<br><br>
+
+<button onclick="makePDF()">Create PDF</button>
+
+<p id="msg"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+async function makePDF(){
+const { jsPDF } = window.jspdf;
+
+let pdf = new jsPDF();
+
+let files = document.getElementById("files").files;
+
+if(files.length == 0){
+document.getElementById("msg").innerHTML = "Please select images";
+return;
+}
+
+for(let i=0;i<files.length;i++){
+let file = files[i];
+
+let imgData = await new Promise(resolve=>{
+let reader = new FileReader();
+reader.onload = e => resolve(e.target.result);
+reader.readAsDataURL(file);
+});
+
+if(i > 0){
+pdf.addPage();
+}
+
+pdf.addImage(imgData, "JPEG", 10, 10, 180, 160);
+}
+
+pdf.save("ashish-tools.pdf");
+
+document.getElementById("msg").innerHTML = "PDF Downloaded Successfully!";
+}
+</script>
+
+</body>
+</html>
