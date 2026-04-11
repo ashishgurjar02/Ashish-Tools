@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tourist Finder (All Cities)</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>🌍 Tourist Finder (Any City)</h1>
+
+<input type="text" id="city" placeholder="Enter any city">
+
+<br><br>
+
+<button onclick="search()">Search Places</button>
+
+<div id="result" style="margin-top:20px;"></div>
+
+<script>
+async function search(){
+
+let city = document.getElementById("city").value;
+
+if(city==""){
+document.getElementById("result").innerHTML = "Enter city name";
+return;
+}
+
+// get coordinates from city
+let geo = await fetch("https://nominatim.openstreetmap.org/search?format=json&q=" + city);
+let geoData = await geo.json();
+
+if(geoData.length == 0){
+document.getElementById("result").innerHTML = "City not found";
+return;
+}
+
+let lat = geoData[0].lat;
+let lon = geoData[0].lon;
+
+// Overpass API for tourist places
+let query = `
+[out:json];
+node["tourism"](around:5000,${lat},${lon});
+out;
+`;
+
+let res = await fetch("https://overpass-api.de/api/interpreter", {
+method: "POST",
+body: query
+});
+
+let data = await res.json();
+
+let html = "<h2>Tourist Places:</h2><ul>";
+
+data.elements.slice(0,20).forEach(p=>{
+if(p.tags && p.tags.name){
+html += "<li>" + p.tags.name + "</li>";
+}
+});
+
+html += "</ul>";
+
+document.getElementById("result").innerHTML = html;
+
+}
+</script>
+
+</body>
+</html>
