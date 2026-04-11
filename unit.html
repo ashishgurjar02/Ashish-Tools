@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unit Converter | Ashish Tools</title>
+</head>
+
+<body style="font-family:sans-serif; text-align:center">
+
+<h1>📏 Unit Converter</h1>
+
+<p>Enter Value:</p>
+<input type="number" id="value">
+
+<br><br>
+
+<select id="from">
+<option value="km">Kilometer</option>
+<option value="m">Meter</option>
+<option value="cm">Centimeter</option>
+<option value="kg">Kilogram</option>
+<option value="g">Gram</option>
+<option value="c">Celsius</option>
+<option value="f">Fahrenheit</option>
+</select>
+
+➡
+
+<select id="to">
+<option value="m">Meter</option>
+<option value="km">Kilometer</option>
+<option value="cm">Centimeter</option>
+<option value="g">Gram</option>
+<option value="kg">Kilogram</option>
+<option value="f">Fahrenheit</option>
+<option value="c">Celsius</option>
+</select>
+
+<br><br>
+
+<button onclick="convert()">Convert</button>
+
+<h2 id="result"></h2>
+
+<script>
+function convert(){
+
+let val = parseFloat(document.getElementById("value").value);
+let from = document.getElementById("from").value;
+let to = document.getElementById("to").value;
+
+if(isNaN(val)){
+document.getElementById("result").innerHTML = "Enter value";
+return;
+}
+
+let res = val;
+
+// Length
+if(from=="km" && to=="m") res = val * 1000;
+else if(from=="m" && to=="km") res = val / 1000;
+else if(from=="cm" && to=="m") res = val / 100;
+else if(from=="m" && to=="cm") res = val * 100;
+
+// Weight
+else if(from=="kg" && to=="g") res = val * 1000;
+else if(from=="g" && to=="kg") res = val / 1000;
+
+// Temperature
+else if(from=="c" && to=="f") res = (val * 9/5) + 32;
+else if(from=="f" && to=="c") res = (val - 32) * 5/9;
+
+document.getElementById("result").innerHTML = "Result: " + res;
+}
+</script>
+
+</body>
+</html>
