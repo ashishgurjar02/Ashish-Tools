@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SEO Tool | Ashish Tools</title>
+</head>
+
+<body style="font-family:sans-serif; text-align:center">
+
+<h1>🔍 SEO Title & Meta Generator</h1>
+
+<p>Enter Keyword:</p>
+<input type="text" id="keyword" placeholder="e.g. cricket live score">
+
+<br><br>
+
+<button onclick="generate()">Generate SEO</button>
+
+<h2 id="title"></h2>
+<p id="meta"></p>
+
+<script>
+function generate(){
+
+let kw = document.getElementById("keyword").value;
+
+if(kw == ""){
+document.getElementById("title").innerHTML = "Enter keyword";
+return;
+}
+
+let title = kw + " | Best Free Tool 2026";
+let meta = "Use our free " + kw + " tool online. Fast, easy and accurate. 100% free tools website.";
+
+document.getElementById("title").innerHTML = "Title: " + title;
+document.getElementById("meta").innerHTML = "Meta: " + meta;
+}
+</script>
+
+</body>
+</html>
