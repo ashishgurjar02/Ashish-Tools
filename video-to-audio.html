@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Video to Audio Converter | Ashish Tools</title>
+</head>
+
+<body style="font-family:sans-serif; text-align:center">
+
+<h1>🎥➡🎵 Video to Audio Converter</h1>
+
+<p>Select Video File:</p>
+<input type="file" id="file" accept="video/*">
+
+<br><br>
+
+<button onclick="convert()">Convert to Audio</button>
+
+<br><br>
+
+<audio id="audio" controls style="display:none"></audio>
+
+<br><br>
+
+<button onclick="download()">Download Audio</button>
+
+<script>
+let audioBlob;
+
+function convert(){
+
+let file = document.getElementById("file").files[0];
+
+if(!file){
+alert("Select video file");
+return;
+}
+
+// create video element
+let video = document.createElement("video");
+video.src = URL.createObjectURL(file);
+
+video.onloadedmetadata = function(){
+
+let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let source = audioCtx.createMediaElementSource(video);
+let dest = audioCtx.createMediaStreamDestination();
+
+source.connect(dest);
+source.connect(audioCtx.destination);
+
+let mediaRecorder = new MediaRecorder(dest.stream);
+let chunks = [];
+
+mediaRecorder.ondataavailable = e => chunks.push(e.data);
+
+mediaRecorder.onstop = function(){
+audioBlob = new Blob(chunks, {type:"audio/mp3"});
+let url = URL.createObjectURL(audioBlob);
+
+let audio = document.getElementById("audio");
+audio.src = url;
+audio.style.display = "block";
+};
+
+mediaRecorder.start();
+video.play();
+
+video.onended = () => mediaRecorder.stop();
+
+};
+
+}
+
+function download(){
+
+if(!audioBlob){
+alert("Convert first");
+return;
+}
+
+let a = document.createElement("a");
+a.href = URL.createObjectURL(audioBlob);
+a.download = "audio.mp3";
+a.click();
+
+}
+</script>
+
+</body>
+</html>
