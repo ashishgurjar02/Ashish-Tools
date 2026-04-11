@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insta Bio & Status Generator | Ashish Tools</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>📱 Insta Bio & WhatsApp Status Generator</h1>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<br><br>
+
+<select id="style">
+<option value="attitude">Attitude</option>
+<option value="love">Love</option>
+<option value="sad">Sad</option>
+<option value="cool">Cool</option>
+</select>
+
+<br><br>
+
+<button onclick="generate()">Generate Bio</button>
+
+<div id="output" style="margin-top:20px;"></div>
+
+<script>
+function generate(){
+
+let name = document.getElementById("name").value;
+let style = document.getElementById("style").value;
+
+let bio = "";
+
+if(style=="attitude"){
+bio = "🔥 " + name + " | Born to rule 😎 | No limits 🚀";
+}
+
+if(style=="love"){
+bio = "❤️ " + name + " | Love is life 💕 | Smile always 😊";
+}
+
+if(style=="sad"){
+bio = "💔 " + name + " | Broken but strong 😔 | Silence speaks";
+}
+
+if(style=="cool"){
+bio = "😎 " + name + " | Stay cool ✌️ | Enjoy life 🎉";
+}
+
+let output = document.getElementById("output");
+output.innerHTML = "<p>"+bio+"</p>";
+
+}
+</script>
+
+</body>
+</html>
