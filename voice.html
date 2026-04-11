@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Voice to Text</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+<h1>🎤 Voice to Text</h1>
+
+<button onclick="start()">Start Speaking</button>
+
+<p id="output"></p>
+
+<script>
+function start(){
+
+let recognition = new webkitSpeechRecognition();
+recognition.lang = "en-US";
+
+recognition.onresult = function(event){
+document.getElementById("output").innerHTML =
+event.results[0][0].transcript;
+};
+
+recognition.start();
+
+}
+</script>
+
+</body>
+</html>
