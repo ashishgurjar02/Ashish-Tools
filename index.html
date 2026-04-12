@@ -360,3 +360,116 @@ box.innerHTML += `
 
 </script>
 
+<div id="box"></div>
+<style>
+body{
+margin:0;
+font-family:sans-serif;
+background:#f2f2f2;
+}
+
+.card{
+background:white;
+margin:10px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+}
+
+.card a{
+display:block;
+padding:10px;
+background:black;
+color:white;
+text-decoration:none;
+}
+</style>
+
+<script>
+
+function getImage(name){
+
+name = name.toLowerCase();
+
+if(name.includes("math")) return "https://via.placeholder.com/300x200?text=Math";
+if(name.includes("bmi")) return "https://via.placeholder.com/300x200?text=BMI";
+if(name.includes("emi")) return "https://via.placeholder.com/300x200?text=EMI";
+if(name.includes("percentage")) return "https://via.placeholder.com/300x200?text=Percentage";
+if(name.includes("currency")) return "https://via.placeholder.com/300x200?text=Currency";
+if(name.includes("qr")) return "https://via.placeholder.com/300x200?text=QR";
+if(name.includes("ipl")) return "https://via.placeholder.com/300x200?text=IPL";
+if(name.includes("face")) return "https://via.placeholder.com/300x200?text=Face";
+if(name.includes("bg")) return "https://via.placeholder.com/300x200?text=BG";
+
+return "https://via.placeholder.com/300x200?text=Tool";
+}
+
+<script>
+
+ <script>
+
+let tools = [
+{name:"Age Calculator", link:"age.html"},
+{name:"Percentage Calculator", link:"percentage.html"},
+{name:"BMI Calculator", link:"bmi.html"},
+{name:"EMI Calculator", link:"emi.html"},
+{name:"Simple Interest Calculator", link:"si.html"},
+{name:"Password Generator", link:"password.html"},
+{name:"Discount Calculator", link:"discount.html"},
+{name:"Loan Calculator", link:"loan.html"},
+{name:"Age Difference Calculator", link:"age-diff.html"},
+{name:"Currency Converter", link:"currency-195-full.html"},
+{name:"Trigonometry Calculator", link:"trigno.html"},
+{name:"Math Formula", link:"math-formula.html"},
+{name:"PDF Tool", link:"pdf.html"},
+{name:"IPL Live Score", link:"ipl.html"},
+{name:"Face Enhance", link:"face-enhance.html"},
+{name:"Word Counter", link:"word-counter.html"},
+{name:"SEO Tool", link:"seo-tool.html"},
+{name:"CGPA Calculator", link:"cgpa.html"},
+{name:"QR Generator", link:"qr.html"},
+{name:"Image Compressor", link:"compress-pro.html"},
+{name:"Unit Converter", link:"unit.html"},
+{name:"BG Remover", link:"bg-remover-pro.html"},
+{name:"Video to Audio", link:"video-to-audio.html"},
+{name:"Day Finder", link:"day-finder.html"},
+{name:"Typing Test", link:"typing.html"},
+{name:"Voice to Text", link:"voice.html"},
+{name:"Handwriting Tool", link:"handwriting-ultra.html"},
+{name:"Font Generator", link:"font-generator.html"},
+{name:"Insta Bio", link:"insta-bio-mega.html"},
+{name:"Location QR", link:"location-qr.html"},
+{name:"Weather Tool", link:"weather.html"},
+{name:"IP Finder", link:"ip.html"},
+{name:"Tourist Finder", link:"tourist-api.html"},
+{name:"Emoji Generator", link:"emoji-all-world.html"}
+];
+
+</script>
+
+<script>
+
+let box = document.getElementById("box");
+
+tools.forEach(t=>{
+
+let img = getImage(t.name);
+
+box.innerHTML += `
+<div class="card">
+<img src="${img}">
+<h3>${t.name}</h3>
+<a href="${t.link}">Open</a>
+</div>
+`;
+
+});
+
+</script>
