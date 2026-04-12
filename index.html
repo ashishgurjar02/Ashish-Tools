@@ -167,3 +167,44 @@ show(filtered);
 
 </body>
 </html>
+
+<style>
+body{
+user-select:none;
+-webkit-user-select:none;
+-moz-user-select:none;
+}
+</style>
+
+<script>
+document.addEventListener("contextmenu", function(e){
+e.preventDefault();
+});
+</script>
+
+<script>
+document.addEventListener("keydown", function(e){
+
+if(e.ctrlKey && (e.key === "u" || e.key === "c" || e.key === "s")){
+e.preventDefault();
+}
+
+});
+</script>
+
+<div style="
+position:fixed;
+bottom:10px;
+right:10px;
+background:black;
+color:white;
+padding:8px 12px;
+border-radius:10px;
+font-size:12px;
+opacity:0.6;
+z-index:9999;
+">
+© My Tools Website
+</div>
+
+
