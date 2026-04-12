@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>All World Emoji Generator | Ashish Tools</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+background:#f2f2f2;
+}
+
+h1{
+background:#333;
+color:white;
+padding:10px;
+}
+
+input{
+padding:10px;
+width:80%;
+margin:10px;
+}
+
+#emojiBox{
+margin-top:20px;
+padding:15px;
+background:white;
+font-size:28px;
+min-height:200px;
+}
+
+span{
+cursor:pointer;
+padding:6px;
+display:inline-block;
+}
+
+span:hover{
+background:#ddd;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🌍 All Emoji Generator (World)</h1>
+
+<input type="text" id="search" placeholder="Search emoji..." onkeyup="searchEmoji()">
+
+<div id="emojiBox">Loading emojis...</div>
+
+<script>
+
+let allEmojis = [];
+
+// 🔥 YOUR API KEY ADDED
+fetch("https://emoji-api.com/emojis?access_key=70571c5011bb01cf5f1ed3a584db467c6dec7653")
+.then(res => res.json())
+.then(data => {
+allEmojis = data;
+showAll();
+})
+.catch(()=>{
+document.getElementById("emojiBox").innerText = "Error loading emojis ❌";
+});
+
+// show all
+function showAll(){
+let html = "";
+allEmojis.forEach(e=>{
+html += `<span onclick="copy('${e.character}')">${e.character}</span>`;
+});
+document.getElementById("emojiBox").innerHTML = html;
+}
+
+// search
+function searchEmoji(){
+let value = document.getElementById("search").value.toLowerCase();
+let html = "";
+
+allEmojis.forEach(e=>{
+if(e.unicodeName.toLowerCase().includes(value)){
+html += `<span onclick="copy('${e.character}')">${e.character}</span>`;
+}
+});
+
+document.getElementById("emojiBox").innerHTML = html;
+}
+
+// copy
+function copy(e){
+navigator.clipboard.writeText(e);
+alert("Copied: " + e);
+}
+
+</script>
+
+</body>
+</html>
