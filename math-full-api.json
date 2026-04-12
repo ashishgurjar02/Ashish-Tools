@@ -1,0 +1,63 @@
+{
+  "1": [
+    "1 + 1 = 2",
+    "2 + 2 = 4",
+    "Table of 2, 3, 4, 5",
+    "Basic subtraction: 5 - 2 = 3"
+  ],
+  "2": [
+    "Multiplication: 2 × 3 = 6",
+    "Division: 10 ÷ 2 = 5",
+    "Tables 1–10 complete"
+  ],
+  "3": [
+    "Fractions: 1/2 + 1/2 = 1",
+    "Area of square = side × side",
+    "Perimeter = 4 × side"
+  ],
+  "4": [
+    "Area of rectangle = length × width",
+    "Perimeter = 2(l + b)",
+    "Division rules"
+  ],
+  "5": [
+    "Decimal addition rules",
+    "Fraction conversion",
+    "LCM & HCF basics"
+  ],
+  "6": [
+    "x + y algebra basics",
+    "Integer rules (+/-)",
+    "Simple equations: x + 5 = 10"
+  ],
+  "7": [
+    "Ratio: a:b",
+    "Proportion: a/b = c/d",
+    "Simple linear equations"
+  ],
+  "8": [
+    "Linear equation: y = mx + c",
+    "Pythagoras: a² + b² = c²",
+    "Graph plotting basics"
+  ],
+  "9": [
+    "Polynomial: ax² + bx + c",
+    "Quadratic formula",
+    "Trigonometry basics"
+  ],
+  "10": [
+    "Quadratic equation: ax² + bx + c = 0",
+    "sin²θ + cos²θ = 1",
+    "Height & distance formulas"
+  ],
+  "11": [
+    "Sets: A ∪ B, A ∩ B",
+    "Limits: lim x→0",
+    "Functions: f(x)"
+  ],
+  "12": [
+    "Integration: ∫ x dx",
+    "Differentiation: d/dx",
+    "Vectors and 3D geometry"
+  ]
+}
