@@ -23,3 +23,13 @@ wm.style.pointerEvents = "none";
 document.body.appendChild(wm);
 
 })();
+
+console.log(data);
+
+let followers =
+data?.data?.followers ||
+data?.followers ||
+data?.result?.followers;
+
+document.getElementById("result").innerText =
+"Followers: " + followers;
