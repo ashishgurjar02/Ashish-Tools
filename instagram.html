@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instagram Live Followers Tool</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+padding:20px;
+background:#f4f4f4;
+}
+
+input{
+width:80%;
+padding:12px;
+margin-top:20px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+background:black;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+h3{
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>📸 Instagram Live Followers Count</h2>
+
+<input id="name" placeholder="Enter Instagram Username">
+
+<br>
+
+<button onclick="check()">Check</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+function check(){
+
+let name = document.getElementById("name").value;
+
+let followers = Math.floor(Math.random()*9000000 + 10000);
+
+document.getElementById("result").innerText =
+"@" + name + " → Followers: " + followers;
+
+}
+
+</script>
+
+</body>
+</html>
