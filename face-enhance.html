@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Face Enhance Tool</title>
+</head>
+
+<body>
+
+<h1>📸 AI Face Restore</h1>
+
+<input type="file" id="file"><br><br>
+
+<button onclick="enhance()">Enhance Image</button>
+
+<br><br>
+
+<img id="result" width="300">
+
+<script>
+
+function enhance(){
+
+let file = document.getElementById("file").files[0];
+
+if(!file){
+alert("Image select karo");
+return;
+}
+
+let formData = new FormData();
+formData.append("image", file);
+
+fetch("https://face-restoration.p.rapidapi.com/enhance-face", {
+method: "POST",
+headers: {
+"x-rapidapi-key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+"x-rapidapi-host": "face-restoration.p.rapidapi.com"
+},
+body: formData
+})
+.then(res => res.json())
+.then(data => {
+
+console.log(data);
+
+let img =
+data.image ||
+data.result ||
+data.image_url ||
+data.output;
+
+if(img){
+document.getElementById("result").src = img;
+}
+else{
+alert("Response format error ❌ console check karo");
+}
+
+})
+.catch(()=>{
+alert("API error ❌");
+});
+
+}
+
+</script>
+
+</body>
+</html>
