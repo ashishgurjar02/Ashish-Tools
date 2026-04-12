@@ -1,0 +1,14 @@
+{
+  "1": ["Addition", "Subtraction", "Tables 1-10"],
+  "2": ["Multiplication", "Division"],
+  "3": ["Fractions", "Basic Geometry"],
+  "4": ["Area", "Perimeter"],
+  "5": ["Decimals", "Factors"],
+  "6": ["Integers", "Algebra Basics"],
+  "7": ["Ratio", "Proportion"],
+  "8": ["Linear Equations", "Graph Basics"],
+  "9": ["Pythagoras Theorem", "Polynomials"],
+  "10": ["Quadratic Equation", "Trigonometry"],
+  "11": ["Sets", "Functions", "Limits"],
+  "12": ["Integration", "Differentiation", "Vectors"]
+}
