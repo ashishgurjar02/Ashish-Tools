@@ -12,3 +12,14 @@ if (e.ctrlKey && e.keyCode == 85) return false;
 
 // Copy block
 document.body.style.userSelect = "none";
+
+// 💧 Watermark Auto Add
+let wm = document.createElement("div");
+wm.innerHTML = "Ashish Tools";
+wm.style.position = "fixed";
+wm.style.bottom = "5px";
+wm.style.right = "10px";
+wm.style.opacity = "0.5";
+wm.style.fontSize = "14px";
+wm.style.zIndex = "9999";
+document.body.appendChild(wm);
