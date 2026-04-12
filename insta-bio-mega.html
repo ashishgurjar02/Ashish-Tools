@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insta Bio Mega Generator</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+background:#f2f2f2;
+}
+
+input, select, button{
+padding:10px;
+margin:8px;
+}
+
+#output{
+margin-top:20px;
+padding:15px;
+background:white;
+border:1px solid #ccc;
+white-space:pre-line;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 Unlimited Insta Bio Generator</h1>
+
+<input type="text" id="name" placeholder="Enter your name"><br>
+
+<select id="type">
+<option value="attitude">😎 Attitude</option>
+<option value="love">❤️ Love</option>
+<option value="sad">💔 Sad</option>
+<option value="vip">👑 VIP</option>
+<option value="gym">💪 Gym</option>
+<option value="student">📚 Student</option>
+<option value="gaming">🎮 Gaming</option>
+</select>
+
+<br>
+
+<button onclick="generate()">Generate Bio</button>
+<button onclick="copy()">Copy</button>
+
+<div id="output"></div>
+
+<script>
+
+// unlimited lines database
+let lines1 = ["🔥 Born to shine","💯 Unique personality","😎 Attitude king","🚀 Dream big","💎 Limited edition"];
+let lines2 = ["❤️ Love life","💔 Broken heart","👑 Royal entry","💪 Fitness freak","🎮 Gaming pro"];
+let lines3 = ["📍 India","🌍 World traveler","📸 Photography lover","🎧 Music vibe","🚫 Don't copy"];
+
+function random(arr){
+return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function generate(){
+
+let name = document.getElementById("name").value;
+let type = document.getElementById("type").value;
+
+let bio = `
+✨ ${name} ✨
+${random(lines1)}
+${random(lines2)}
+${random(lines3)}
+💥 ${type.toUpperCase()} MODE
+`;
+
+document.getElementById("output").innerText = bio;
+
+}
+
+function copy(){
+let text = document.getElementById("output").innerText;
+navigator.clipboard.writeText(text);
+alert("Copied!");
+}
+
+</script>
+
+</body>
+</html>
