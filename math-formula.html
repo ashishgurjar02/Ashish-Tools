@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Math Formula API Tool</title>
+<title>Full Math Formula Finder</title>
 </head>
 
 <body>
 
-<h1>📘 Math Formula Finder (Class 1–12)</h1>
+<h1>📘 Math Full Formula Finder (1–12)</h1>
 
 <select id="class">
 <option value="1">Class 1</option>
@@ -23,14 +23,13 @@
 <option value="12">Class 12</option>
 </select>
 
-<button onclick="getFormula()">Get Formula</button>
+<button onclick="getFormula()">Get All Formulas</button>
 
 <div id="box"></div>
 
 <script>
 
-// API URL (GitHub raw link or hosted JSON)
-let apiURL = "math-api.json";
+let apiURL = "math-full-api.json";
 
 function getFormula(){
 
@@ -45,7 +44,7 @@ let result = data[c];
 if(result){
 
 document.getElementById("box").innerHTML =
-"📘 Class " + c + "<br><br>" +
+"📘 Class " + c + " Full Formulas:<br><br>" +
 result.map(x => "✔ " + x).join("<br>");
 
 }else{
