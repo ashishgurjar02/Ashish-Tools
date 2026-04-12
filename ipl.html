@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IPL Live Score</title>
+</head>
+
+<body>
+
+<h1>🏏 Live Matches</h1>
+
+<div id="data">Loading...</div>
+
+<script>
+
+fetch("https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent", {
+headers: {
+"x-rapidapi-key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+"x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
+}
+})
+.then(res => res.json())
+.then(data => {
+
+let html = "";
+
+data.typeMatches.forEach(t=>{
+t.seriesMatches.forEach(s=>{
+if(s.seriesAdWrapper){
+s.seriesAdWrapper.matches.forEach(m=>{
+
+let info = m.matchInfo;
+
+html += "<p>" + info.team1.teamName + " vs " + info.team2.teamName + "</p>";
+html += "<p>" + info.status + "</p><hr>";
+
+});
+}
+});
+});
+
+document.getElementById("data").innerHTML = html;
+
+})
+.catch(()=>{
+document.getElementById("data").innerText = "Error loading data ❌";
+});
+
+</script>
+
+</body>
+</html>
