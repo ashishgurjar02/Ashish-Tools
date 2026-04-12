@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emoji Generator Pro | Ashish Tools</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+background:#f2f2f2;
+}
+
+h1{
+background:#333;
+color:white;
+padding:12px;
+}
+
+input{
+padding:10px;
+width:80%;
+margin:10px;
+}
+
+#emojiBox{
+margin-top:20px;
+padding:15px;
+background:white;
+font-size:28px;
+min-height:200px;
+}
+
+span{
+cursor:pointer;
+padding:5px;
+display:inline-block;
+}
+
+span:hover{
+background:#ddd;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>😀 Emoji Generator Pro</h1>
+
+<input type="text" id="search" placeholder="Search emoji (e.g. smile, love)" onkeyup="searchEmoji()">
+
+<div id="emojiBox"></div>
+
+<script>
+
+// ALL EMOJI DATA (major categories)
+let emojis = [
+{name:"smile", icon:"😀"}, {name:"happy", icon:"😁"}, {name:"laugh", icon:"😂"}, {name:"cool", icon:"😎"},
+{name:"love", icon:"❤️"}, {name:"heart", icon:"💖"}, {name:"kiss", icon:"😘"},
+{name:"sad", icon:"😢"}, {name:"cry", icon:"😭"}, {name:"angry", icon:"😡"},
+{name:"dog", icon:"🐶"}, {name:"cat", icon:"🐱"}, {name:"lion", icon:"🦁"},
+{name:"food", icon:"🍔"}, {name:"pizza", icon:"🍕"}, {name:"cake", icon:"🎂"},
+{name:"car", icon:"🚗"}, {name:"plane", icon:"✈️"}, {name:"train", icon:"🚆"},
+{name:"football", icon:"⚽"}, {name:"cricket", icon:"🏏"}, {name:"game", icon:"🎮"},
+{name:"fire", icon:"🔥"}, {name:"star", icon:"⭐"}, {name:"tick", icon:"✔️"},
+{name:"flag india", icon:"🇮🇳"}, {name:"flag usa", icon:"🇺🇸"}
+];
+
+// show all
+function loadAll(){
+let html = "";
+emojis.forEach(e=>{
+html += `<span onclick="copy('${e.icon}')">${e.icon}</span>`;
+});
+document.getElementById("emojiBox").innerHTML = html;
+}
+
+// search
+function searchEmoji(){
+let value = document.getElementById("search").value.toLowerCase();
+let html = "";
+
+emojis.forEach(e=>{
+if(e.name.includes(value)){
+html += `<span onclick="copy('${e.icon}')">${e.icon}</span>`;
+}
+});
+
+document.getElementById("emojiBox").innerHTML = html;
+}
+
+// copy
+function copy(e){
+navigator.clipboard.writeText(e);
+alert("Copied: " + e);
+}
+
+// load default
+loadAll();
+
+</script>
+
+</body>
+</html>
