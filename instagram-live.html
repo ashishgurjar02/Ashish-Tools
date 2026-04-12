@@ -35,3 +35,42 @@ document.getElementById("result").innerText =
 }
 
 </script>
+
+<script>
+
+function getFollowers(){
+
+let username = document.getElementById("user").value;
+
+fetch("https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_followers_v2.php?username="+username, {
+	method: "GET",
+	headers: {
+		"X-RapidAPI-Key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+		"X-RapidAPI-Host": "instagram-scraper-stable-api.p.rapidapi.com"
+	}
+})
+.then(res => res.json())
+.then(data => {
+
+console.log(data);
+
+// 🔥 SAFE FIX (no undefined)
+let followers =
+data.followers ||
+data.data?.followers ||
+data.result?.followers ||
+data.followers_count ||
+"Not Found";
+
+document.getElementById("result").innerText =
+"Followers: " + followers;
+
+})
+.catch(err => {
+document.getElementById("result").innerText =
+"API Error";
+});
+
+}
+
+</script>
