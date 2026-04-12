@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><style>
+body{
+user-select: none;
+}
+</style>
 <title>Free Age Calculator Online | Ashish Tools</title>
 </head>
 <body style="text-align:center; font-family:sans-serif">
@@ -41,4 +45,14 @@ document.getElementById("result").innerHTML = "Your Age is: " + age + " years";
 </script>
 
 </body>
+  <script>
+document.onkeydown = function(e) {
+if (e.keyCode == 123) return false;
+if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false;
+if (e.ctrlKey && e.keyCode == 85) return false;
+};
+  </script>
 </html>
+<div style="position:fixed; bottom:5px; right:10px;">
+Ashish Tools
+</div>
