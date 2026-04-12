@@ -23,3 +23,7 @@ wm.style.opacity = "0.5";
 wm.style.fontSize = "14px";
 wm.style.zIndex = "9999";
 document.body.appendChild(wm);
+wm.style.top = "50%";
+wm.style.left = "50%";
+wm.style.transform = "translate(-50%, -50%)";
+wm.style.opacity = "0.2";
