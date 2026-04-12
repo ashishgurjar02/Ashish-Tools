@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Background Remover Pro | Ashish Tools</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+background:#f2f2f2;
+}
+
+h1{
+background:#333;
+color:white;
+padding:12px;
+}
+
+input, button{
+margin:10px;
+padding:10px;
+}
+
+img{
+max-width:300px;
+margin-top:20px;
+}
+
+#downloadBtn{
+display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🖼 Background Remover (Pro)</h1>
+
+<input type="file" id="file"><br>
+
+<button onclick="removeBg()">Remove Background</button>
+<button id="downloadBtn" onclick="downloadImage()">Download</button>
+
+<br>
+<img id="result">
+
+<script>
+
+let finalUrl = "";
+
+function removeBg(){
+
+let file = document.getElementById("file").files[0];
+
+if(!file){
+alert("Please select image");
+return;
+}
+
+let formData = new FormData();
+formData.append("image_file", file);
+formData.append("size", "auto");
+
+fetch("https://api.remove.bg/v1.0/removebg", {
+method: "POST",
+headers: {
+"X-Api-Key": "iCM8cRETQs4aRD453jiuzh6B"
+},
+body: formData
+})
+.then(res => res.blob())
+.then(blob => {
+
+finalUrl = URL.createObjectURL(blob);
+document.getElementById("result").src = finalUrl;
+document.getElementById("downloadBtn").style.display = "inline-block";
+
+})
+.catch(()=>{
+alert("Error removing background ❌");
+});
+
+}
+
+function downloadImage(){
+
+let a = document.createElement("a");
+a.href = finalUrl;
+a.download = "removed-bg.png";
+a.click();
+
+}
+
+</script>
+
+</body>
+</html>
