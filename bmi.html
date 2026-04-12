@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><style>
+body{
+user-select: none;
+}
+</style>
 <title>BMI Calculator Free Online | Ashish Tools</title>
 </head>
 <body style="text-align:center; font-family:sans-serif">
@@ -51,5 +55,18 @@ document.getElementById("result").innerHTML =
 }
 </script>
 
-</body>
+</body><script>
+document.addEventListener("contextmenu", function(e){
+e.preventDefault();
+});
+
+document.onkeydown = function(e) {
+if (e.keyCode == 123) return false;
+if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false;
+if (e.ctrlKey && e.keyCode == 85) return false;
+};
+</script>
 </html>
+<footer style="text-align:center; margin-top:20px;">
+© Ashish Gurjar | Ashish Tools
+</footer>
