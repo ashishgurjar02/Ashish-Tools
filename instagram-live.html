@@ -1,74 +1,42 @@
-<h2>📸 Instagram Live Followers</h2>
+<h2>📸 Instagram Live Followers Tool</h2>
 
-<input id="user" placeholder="Enter Username">
-<button onclick="getFollowers()">Get Followers</button>
+<input id="user" placeholder="Enter Instagram Username">
 
-<h2 id="result"></h2>
+<button onclick="getFollowers()">Check Followers</button>
+
+<h1 id="result">0</h1>
 
 <script>
 
 function getFollowers(){
 
-let username = document.getElementById("user").value;
+let user = document.getElementById("user").value;
 
-fetch("https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_followers_v2.php?username="+username, {
-	method: "GET",
-	headers: {
-		"X-RapidAPI-Key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
-		"X-RapidAPI-Host": "instagram-scraper-stable-api.p.rapidapi.com"
-	}
-})
-.then(res => res.json())
-.then(data => {
-
-console.log(data);
-
-document.getElementById("result").innerText =
-"Followers: " + data.followers;
-
-})
-.catch(err => {
-document.getElementById("result").innerText =
-"Error loading data";
-});
-
+fetch("https://social-counter1.p.rapidapi.com/uhsrhulxolrdxckcsfnd.supabase.co/functions/v1/api?key=YOUR_KEY&username="+user, {
+method: "GET",
+headers: {
+"X-RapidAPI-Key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+"X-RapidAPI-Host": "social-counter1.p.rapidapi.com"
 }
-
-</script>
-
-<script>
-
-function getFollowers(){
-
-let username = document.getElementById("user").value;
-
-fetch("https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_followers_v2.php?username="+username, {
-	method: "GET",
-	headers: {
-		"X-RapidAPI-Key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
-		"X-RapidAPI-Host": "instagram-scraper-stable-api.p.rapidapi.com"
-	}
 })
 .then(res => res.json())
 .then(data => {
 
 console.log(data);
 
-// 🔥 SAFE FIX (no undefined)
+// safe extraction (important)
 let followers =
 data.followers ||
+data.followers_count ||
 data.data?.followers ||
 data.result?.followers ||
-data.followers_count ||
 "Not Found";
 
-document.getElementById("result").innerText =
-"Followers: " + followers;
+document.getElementById("result").innerText = followers;
 
 })
 .catch(err => {
-document.getElementById("result").innerText =
-"API Error";
+document.getElementById("result").innerText = "API Error";
 });
 
 }
