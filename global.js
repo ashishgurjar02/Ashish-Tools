@@ -24,4 +24,5 @@ document.body.appendChild(wm);
 
 })();
 
-console.log(data);
+
+ console.log(data);
