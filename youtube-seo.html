@@ -1,0 +1,38 @@
+<h2>YouTube SEO Generator</h2>
+
+<input id="topic" placeholder="Enter topic">
+
+<button onclick="go()">Generate</button>
+
+<p id="out"></p>
+
+<script>
+
+function go(){
+
+let t = document.getElementById("topic").value;
+
+fetch("https://open-ai21.p.rapidapi.com/conversationllama", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+"X-RapidAPI-Key": "YOUR_API_KEY",
+"X-RapidAPI-Host": "open-ai21.p.rapidapi.com"
+},
+body: JSON.stringify({
+messages: [
+{role:"user", content:"Give YouTube Title, Description, Tags, Hashtags for: " + t}
+]
+})
+})
+.then(res => res.json())
+.then(data => {
+
+document.getElementById("out").innerText =
+data.response || data.answer || "No result";
+
+});
+
+}
+
+</script>
