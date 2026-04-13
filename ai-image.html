@@ -1,36 +1,97 @@
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Image Generator</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+padding:20px;
+background:#111;
+color:white;
+}
+
+input{
+width:80%;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:20px;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+background:#ff2d55;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+img{
+margin-top:20px;
+width:300px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🎨 AI Text to Image Generator</h2>
+
+<input id="text" placeholder="Enter prompt (e.g. lion in space)">
+
+<br>
+
+<button onclick="generate()">Generate</button>
+
+<p id="status"></p>
+
+<br>
+
+<img id="img"
+
+  <script>
 
 function generate(){
 
 let text = document.getElementById("text").value;
 
-document.getElementById("loading").innerText = "Generating...";
+document.getElementById("status").innerText =
+"Generating image...";
 
-fetch("https://YOUR_API_URL/generate", {
-method: "POST",
+fetch("https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com/aaaaaaaaaaaaaaaaaiimagegenerator/quick.php?prompt="+encodeURIComponent(text), {
+method: "GET",
 headers: {
-"Content-Type": "application/json",
-"X-RapidAPI-Key": "YOUR_KEY",
-"X-RapidAPI-Host": "YOUR_HOST"
-},
-body: JSON.stringify({
-prompt: text
-})
+"X-RapidAPI-Key": "7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+"X-RapidAPI-Host": "ai-text-to-image-generator-flux-free-api.p.rapidapi.com"
+}
 })
 .then(res => res.json())
 .then(data => {
 
+console.log(data);
+
+// different API formats handle
 let image =
-data.image_url || data.url || data.output;
+data.image ||
+data.image_url ||
+data.result ||
+data.output ||
+data.data?.image;
 
 document.getElementById("img").src = image;
 
-document.getElementById("loading").innerText = "";
+document.getElementById("status").innerText =
+"Done ✅";
 
 })
-.catch(()=>{
+.catch(err => {
 
-document.getElementById("loading").innerText =
+document.getElementById("status").innerText =
 "Error generating image";
 
 });
@@ -41,3 +102,5 @@ document.getElementById("loading").innerText =
 
 </body>
 </html>
+
+  
