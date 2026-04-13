@@ -26,3 +26,11 @@ document.body.appendChild(wm);
 
 
  console.log(data);
+
+setInterval(()=>{
+
+if(document.getElementById("user").value){
+getFollowers();
+}
+
+}, 5000);
