@@ -12,19 +12,14 @@ function check(){
 
 let u = document.getElementById("user").value;
 
-fetch("https://www.instagram.com/"+u+"/?__a=1")
-.then(res => {
+// new tab में instagram open
+let url = "https://www.instagram.com/" + u;
 
-if(res.status == 200){
-document.getElementById("result").innerText = "❌ Username Taken";
-}else{
-document.getElementById("result").innerText = "✅ Username Available";
-}
+window.open(url, "_blank");
 
-})
-.catch(()=>{
-document.getElementById("result").innerText = "✅ Username Available";
-});
+// message
+document.getElementById("result").innerText =
+"👉 अगर profile open हो जाए = ❌ Taken\n👉 अगर page not found आए = ✅ Available";
 
 }
 
