@@ -95,26 +95,28 @@ headers:{
 .then(res=>res.json())
 .then(data=>{
 
+console.log(data); // future debug
+
 let v = data.data || data;
 
-// title
-document.getElementById("title").innerText =
-"Title: " + (v.title || "Not found");
+// 🔥 title (multiple options)
+let title = v.title || v.video_title || v.name || "Not found";
 
-// description
-document.getElementById("desc").innerText =
-"Description: " + (v.description || "Not found");
+// 🔥 description
+let desc = v.description || v.video_description || v.desc || "Not found";
 
-// tags
-if(v.tags){
+// 🔥 tags
+let tags = v.tags || v.keywords || v.meta_keywords || v.video_tags;
+
+// output
+document.getElementById("title").innerText = "Title: " + title;
+
+document.getElementById("desc").innerText = "Description: " + desc;
+
+if(tags && Array.isArray(tags)){
 document.getElementById("tags").innerText =
-"Tags:\n" + v.tags.join(", ");
-}
-else if(v.keywords){
-document.getElementById("tags").innerText =
-"Tags:\n" + v.keywords.join(", ");
-}
-else{
+"Tags:\n" + tags.join(", ");
+}else{
 document.getElementById("tags").innerText = "No tags";
 }
 
