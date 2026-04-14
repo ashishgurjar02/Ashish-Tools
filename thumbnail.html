@@ -71,9 +71,7 @@ margin-top:15px;
 
 <br>
 
-<a id="download" download="thumbnail.jpg">
-<button>Download</button>
-</a>
+<button onclick="downloadImage()">Download</button>
 
 </div>
 
@@ -102,11 +100,20 @@ let thumb = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
 
 document.getElementById("img").src = thumb;
 
-document.getElementById("download").href = thumb;
+// save link
+window.thumbLink = thumb;
+
+}
+
+function downloadImage(){
+
+let a = document.createElement("a");
+a.href = window.thumbLink;
+a.download = "thumbnail.jpg";
+a.click();
 
 }
 
 </script>
-
 </body>
 </html>
