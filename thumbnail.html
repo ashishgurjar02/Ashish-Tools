@@ -1,4 +1,4 @@
-<h2>🎥 YouTube Thumbnail Downloader</h2>
+<h2>YouTube Thumbnail Downloader</h2>
 
 <input id="link" placeholder="Paste YouTube Link">
 
@@ -10,7 +10,7 @@
 
 <br><br>
 
-<a id="download" download>
+<a id="download" download="thumbnail.jpg">
 <button>Download Thumbnail</button>
 </a>
 
@@ -20,7 +20,6 @@ function getThumb(){
 
 let url = document.getElementById("link").value;
 
-// 🔥 BEST VIDEO ID EXTRACT
 let id = "";
 
 try{
@@ -36,22 +35,14 @@ alert("Invalid Link");
 return;
 }
 
-// 🔥 fallback system
-let thumb1 = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-let thumb2 = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
+// thumbnail link
+let thumb = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
 
-// image set
-let img = document.getElementById("img");
+// image show
+document.getElementById("img").src = thumb;
 
-img.src = thumb1;
-
-// अगर HD नहीं मिला तो fallback
-img.onerror = function(){
-img.src = thumb2;
-}
-
-// download
-document.getElementById("download").href = img.src;
+// 🔥 download button fix
+document.getElementById("download").href = thumb;
 
 }
 
