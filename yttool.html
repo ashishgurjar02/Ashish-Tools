@@ -76,7 +76,11 @@ let u = new URL(url);
 
 if(u.hostname.includes("youtu.be")){
 id = u.pathname.slice(1);
-}else{
+}
+else if(u.pathname.includes("/shorts/")){
+id = u.pathname.split("/shorts/")[1].split("?")[0];
+}
+else{
 id = u.searchParams.get("v");
 }
 }catch(e){
@@ -84,28 +88,30 @@ alert("Invalid Link");
 return;
 }
 
-// 🔥 API CALL
-fetch("https://youtube-video-metadata-extractor2.p.rapidapi.com/api/video/info/get?videoId="+id,{
+// 🔥 NEW API CALL
+fetch("https://youtube-video-metadata-extractor3.p.rapidapi.com/api/video/info/get?videoId="+id,{
 method:"GET",
 headers:{
 "X-RapidAPI-Key":"7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
-"X-RapidAPI-Host":"youtube-video-metadata-extractor2.p.rapidapi.com"
+"X-RapidAPI-Host":"youtube-video-metadata-extractor3.p.rapidapi.com"
 }
 })
 .then(res=>res.json())
 .then(data=>{
 
+console.log(data); // debug
+
 let v = data.data.videoDetails;
 
-// 🔥 title
+// title
 document.getElementById("title").innerText =
-"Title: " + v.title;
+"Title: " + (v.title || "Not found");
 
-// 🔥 description
+// description
 document.getElementById("desc").innerText =
-"Description: " + v.shortDescription;
+"Description: " + (v.shortDescription || "Not found");
 
-// 🔥 tags
+// tags
 if(v.keywords){
 document.getElementById("tags").innerText =
 "Tags:\n" + v.keywords.join(", ");
@@ -115,12 +121,15 @@ document.getElementById("tags").innerText = "No tags";
 
 })
 .catch(()=>{
-alert("API Error / Limit reached");
+alert("API Error / Limit");
 });
 
 }
 
 </script>
+
+function getData(){
+
 
 </body>
 </html>
