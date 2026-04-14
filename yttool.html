@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YouTube Info Extractor</title>
+<title>YouTube Info Tool</title>
 
 <style>
 body{
-font-family: Arial;
+font-family:Arial;
 background:#111;
 color:white;
 text-align:center;
 padding:20px;
 }
-
 .box{
 background:#222;
 padding:20px;
 border-radius:10px;
-max-width:400px;
+max-width:350px;
 margin:auto;
 }
-
 input{
 width:90%;
 padding:10px;
@@ -27,7 +25,6 @@ margin:10px;
 border-radius:8px;
 border:none;
 }
-
 button{
 padding:10px;
 border:none;
@@ -36,18 +33,13 @@ background:red;
 color:white;
 cursor:pointer;
 }
-
-pre{
-text-align:left;
-white-space:pre-wrap;
-}
 </style>
 
 </head>
 
 <body>
 
-<h2>🎥 YouTube Info Extractor</h2>
+<h2>🎥 YouTube Info Tool</h2>
 
 <div class="box">
 
@@ -55,17 +47,15 @@ white-space:pre-wrap;
 
 <br>
 
-<button onclick="getData()">Get Info</button>
+<button onclick="openVideo()">Get Info</button>
 
-<h3 id="title"></h3>
-<p id="desc"></p>
-<pre id="tags"></pre>
+<p>👉 Video open hoga, waha se Title, Description, Tags copy karo</p>
 
 </div>
 
 <script>
 
-function getData(){
+function openVideo(){
 
 let url = document.getElementById("link").value;
 
@@ -88,48 +78,12 @@ alert("Invalid Link");
 return;
 }
 
-// 🔥 NEW API CALL
-fetch("https://youtube-video-metadata-extractor3.p.rapidapi.com/api/video/info/get?videoId="+id,{
-method:"GET",
-headers:{
-"X-RapidAPI-Key":"7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
-"X-RapidAPI-Host":"youtube-video-metadata-extractor3.p.rapidapi.com"
-}
-})
-.then(res=>res.json())
-.then(data=>{
-
-console.log(data); // debug
-
-let v = data.data.videoDetails;
-
-// title
-document.getElementById("title").innerText =
-"Title: " + (v.title || "Not found");
-
-// description
-document.getElementById("desc").innerText =
-"Description: " + (v.shortDescription || "Not found");
-
-// tags
-if(v.keywords){
-document.getElementById("tags").innerText =
-"Tags:\n" + v.keywords.join(", ");
-}else{
-document.getElementById("tags").innerText = "No tags";
-}
-
-})
-.catch(()=>{
-alert("API Error / Limit");
-});
+// 🔥 direct open
+window.open("https://www.youtube.com/watch?v="+id, "_blank");
 
 }
 
 </script>
-
-function getData(){
-
 
 </body>
 </html>
