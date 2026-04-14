@@ -95,17 +95,29 @@ headers:{
 .then(res=>res.json())
 .then(data=>{
 
-// 🔥 data show
-let video = data.data;
+let v = data.data || data;
 
-// 🔥 title
-document.getElementById("title").innerText = "Title: " + video.title;
+// title
+document.getElementById("title").innerText =
+"Title: " + (v.title || "Not found");
 
-// 🔥 description
-document.getElementById("desc").innerText = "Description: " + video.description;
+// description
+document.getElementById("desc").innerText =
+"Description: " + (v.description || "Not found");
 
-// 🔥 tags
-document.getElementById("tags").innerText = "Tags:\n" + (video.tags ? video.tags.join(", ") : "No tags");
+// tags
+if(v.tags){
+document.getElementById("tags").innerText =
+"Tags:\n" + v.tags.join(", ");
+}
+else if(v.keywords){
+document.getElementById("tags").innerText =
+"Tags:\n" + v.keywords.join(", ");
+}
+else{
+document.getElementById("tags").innerText = "No tags";
+}
+
 })
 .catch(()=>{
 alert("API Error / Limit reached");
