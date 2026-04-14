@@ -1,0 +1,31 @@
+<h2>🔥 Instagram Username Checker</h2>
+
+<input id="user" placeholder="Enter username">
+
+<button onclick="check()">Check</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+function check(){
+
+let u = document.getElementById("user").value;
+
+fetch("https://www.instagram.com/"+u+"/?__a=1")
+.then(res => {
+
+if(res.status == 200){
+document.getElementById("result").innerText = "❌ Username Taken";
+}else{
+document.getElementById("result").innerText = "✅ Username Available";
+}
+
+})
+.catch(()=>{
+document.getElementById("result").innerText = "✅ Username Available";
+});
+
+}
+
+</script>
