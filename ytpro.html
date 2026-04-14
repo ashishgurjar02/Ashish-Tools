@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YouTube Extractor</title>
+</head>
+
+<body style="text-align:center;font-family:Arial;background:#111;color:white;">
+
+<h2>🎥 YouTube Tool</h2>
+
+<input id="link" placeholder="Paste YouTube Link" style="padding:10px;width:80%;">
+
+<br><br>
+
+<button onclick="getTitle()">Get Title</button>
+<button onclick="openVideo()">Open Video</button>
+
+<h3 id="title"></h3>
+
+<script>
+
+function getTitle(){
+
+let url = document.getElementById("link").value;
+
+// TITLE API (free)
+fetch("https://www.youtube.com/oembed?url="+url+"&format=json")
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("title").innerText = "Title: " + data.title;
+})
+.catch(()=>{
+alert("Error");
+});
+
+}
+
+function openVideo(){
+
+let url = document.getElementById("link").value;
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
