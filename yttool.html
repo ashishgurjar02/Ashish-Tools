@@ -96,13 +96,16 @@ headers:{
 .then(data=>{
 
 // 🔥 data show
-document.getElementById("title").innerText = "Title: " + data.title;
+let video = data.data;
 
-document.getElementById("desc").innerText = "Description: " + data.description;
+// 🔥 title
+document.getElementById("title").innerText = "Title: " + video.title;
 
-// tags array ko string me convert
-document.getElementById("tags").innerText = "Tags:\n" + (data.keywords ? data.keywords.join(", ") : "No tags");
+// 🔥 description
+document.getElementById("desc").innerText = "Description: " + video.description;
 
+// 🔥 tags
+document.getElementById("tags").innerText = "Tags:\n" + (video.tags ? video.tags.join(", ") : "No tags");
 })
 .catch(()=>{
 alert("API Error / Limit reached");
