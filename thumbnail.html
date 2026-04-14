@@ -20,24 +20,38 @@ function getThumb(){
 
 let url = document.getElementById("link").value;
 
-// video id निकालना
+// 🔥 BEST VIDEO ID EXTRACT
 let id = "";
 
-if(url.includes("v=")){
-id = url.split("v=")[1].split("&")[0];
+try{
+let u = new URL(url);
+
+if(u.hostname.includes("youtu.be")){
+id = u.pathname.slice(1);
+}else{
+id = u.searchParams.get("v");
 }
-else if(url.includes("youtu.be/")){
-id = url.split("youtu.be/")[1];
+}catch(e){
+alert("Invalid Link");
+return;
 }
 
-// thumbnail link
-let thumb = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+// 🔥 fallback system
+let thumb1 = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+let thumb2 = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
 
-// image दिखाना
-document.getElementById("img").src = thumb;
+// image set
+let img = document.getElementById("img");
 
-// download link set करना
-document.getElementById("download").href = thumb;
+img.src = thumb1;
+
+// अगर HD नहीं मिला तो fallback
+img.onerror = function(){
+img.src = thumb2;
+}
+
+// download
+document.getElementById("download").href = img.src;
 
 }
 
