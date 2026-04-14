@@ -107,10 +107,16 @@ window.thumbLink = thumb;
 
 function downloadImage(){
 
+fetch(window.thumbLink)
+.then(res => res.blob())
+.then(blob => {
+
 let a = document.createElement("a");
-a.href = window.thumbLink;
+a.href = URL.createObjectURL(blob);
 a.download = "thumbnail.jpg";
 a.click();
+
+});
 
 }
 
