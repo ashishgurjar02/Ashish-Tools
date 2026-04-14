@@ -1,0 +1,44 @@
+<h2>🎥 YouTube Thumbnail Downloader</h2>
+
+<input id="link" placeholder="Paste YouTube Link">
+
+<button onclick="getThumb()">Get Thumbnail</button>
+
+<br><br>
+
+<img id="img" width="300">
+
+<br><br>
+
+<a id="download" download>
+<button>Download Thumbnail</button>
+</a>
+
+<script>
+
+function getThumb(){
+
+let url = document.getElementById("link").value;
+
+// video id निकालना
+let id = "";
+
+if(url.includes("v=")){
+id = url.split("v=")[1].split("&")[0];
+}
+else if(url.includes("youtu.be/")){
+id = url.split("youtu.be/")[1];
+}
+
+// thumbnail link
+let thumb = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+
+// image दिखाना
+document.getElementById("img").src = thumb;
+
+// download link set करना
+document.getElementById("download").href = thumb;
+
+}
+
+</script>
