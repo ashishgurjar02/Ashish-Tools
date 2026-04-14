@@ -1,18 +1,81 @@
-<h2>YouTube Thumbnail Downloader</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thumbnail Downloader</title>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+text-align:center;
+padding:30px;
+}
+
+.box{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+max-width:350px;
+margin:auto;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+input{
+width:90%;
+padding:10px;
+border-radius:10px;
+border:none;
+margin:10px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#667eea;
+color:white;
+cursor:pointer;
+margin:5px;
+}
+
+button:hover{
+background:#5a67d8;
+}
+
+img{
+width:100%;
+border-radius:10px;
+margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>🎥 YouTube Thumbnail Downloader</h2>
+
+<div class="box">
 
 <input id="link" placeholder="Paste YouTube Link">
 
+<br>
+
 <button onclick="getThumb()">Get Thumbnail</button>
 
-<br><br>
+<br>
 
-<img id="img" width="300">
+<img id="img">
 
-<br><br>
+<br>
 
 <a id="download" download="thumbnail.jpg">
-<button>Download Thumbnail</button>
+<button>Download</button>
 </a>
+
+</div>
 
 <script>
 
@@ -35,15 +98,15 @@ alert("Invalid Link");
 return;
 }
 
-// thumbnail link
 let thumb = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
 
-// image show
 document.getElementById("img").src = thumb;
 
-// 🔥 download button fix
 document.getElementById("download").href = thumb;
 
 }
 
 </script>
+
+</body>
+</html>
