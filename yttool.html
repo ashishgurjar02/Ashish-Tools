@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YouTube Info Extractor</title>
+
+<style>
+body{
+font-family: Arial;
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.box{
+background:#222;
+padding:20px;
+border-radius:10px;
+max-width:400px;
+margin:auto;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:8px;
+background:red;
+color:white;
+cursor:pointer;
+}
+
+pre{
+text-align:left;
+white-space:pre-wrap;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>🎥 YouTube Info Extractor</h2>
+
+<div class="box">
+
+<input id="link" placeholder="Paste YouTube Link">
+
+<br>
+
+<button onclick="getData()">Get Info</button>
+
+<h3 id="title"></h3>
+<p id="desc"></p>
+<pre id="tags"></pre>
+
+</div>
+
+<script>
+
+function getData(){
+
+let url = document.getElementById("link").value;
+
+let id = "";
+
+try{
+let u = new URL(url);
+
+if(u.hostname.includes("youtu.be")){
+id = u.pathname.slice(1);
+}else{
+id = u.searchParams.get("v");
+}
+}catch(e){
+alert("Invalid Link");
+return;
+}
+
+// 🔥 API CALL
+fetch("https://youtube-video-metadata-extractor2.p.rapidapi.com/api/video/info/get?videoId="+id,{
+method:"GET",
+headers:{
+"X-RapidAPI-Key":"7424e8b3cbmshc99285958b2ac5fp1df7d1jsn28a655897217",
+"X-RapidAPI-Host":"youtube-video-metadata-extractor2.p.rapidapi.com"
+}
+})
+.then(res=>res.json())
+.then(data=>{
+
+// 🔥 data show
+document.getElementById("title").innerText = "Title: " + data.title;
+
+document.getElementById("desc").innerText = "Description: " + data.description;
+
+// tags array ko string me convert
+document.getElementById("tags").innerText = "Tags:\n" + (data.keywords ? data.keywords.join(", ") : "No tags");
+
+})
+.catch(()=>{
+alert("API Error / Limit reached");
+});
+
+}
+
+</script>
+
+</body>
+</html>
