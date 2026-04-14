@@ -71,43 +71,58 @@ margin-top:15px;
 
 <br>
 
-<button onclick="downloadImage()">Download</button>
+<button onclick="download('maxres')">HD Download</button>
+<button onclick="download('hq')">Medium</button>
+<button onclick="download('mq')">Low</button>
 
 </div>
 
 <script>
 
+let videoId = "";
+
 function getThumb(){
 
 let url = document.getElementById("link").value;
-
-let id = "";
 
 try{
 let u = new URL(url);
 
 if(u.hostname.includes("youtu.be")){
-id = u.pathname.slice(1);
+videoId = u.pathname.slice(1);
 }else{
-id = u.searchParams.get("v");
+videoId = u.searchParams.get("v");
 }
 }catch(e){
 alert("Invalid Link");
 return;
 }
 
-let thumb = "https://img.youtube.com/vi/"+id+"/hqdefault.jpg";
+// default image (medium)
+let thumb = "https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg";
 
 document.getElementById("img").src = thumb;
 
-// save link
-window.thumbLink = thumb;
-
 }
 
-function downloadImage(){
+function download(type){
 
-fetch(window.thumbLink)
+let quality = "";
+
+if(type=="maxres"){
+quality = "maxresdefault.jpg";
+}
+else if(type=="hq"){
+quality = "hqdefault.jpg";
+}
+else{
+quality = "mqdefault.jpg";
+}
+
+let link = "https://img.youtube.com/vi/"+videoId+"/"+quality;
+
+// force download
+fetch(link)
 .then(res => res.blob())
 .then(blob => {
 
