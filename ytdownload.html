@@ -44,25 +44,14 @@ margin:5px;
 
 <div class="box">
 
-<input id="link" placeholder="Paste YouTube Link">
-
-<br>
-
-<button onclick="download()">Download</button>
-
-</div>
+<input id="link" placeholder="Paste link">
+<button onclick="go()">Download</button>
 
 <script>
-
-function download(){
-
+function go(){
 let url=document.getElementById("link").value;
-
-// 🔥 external downloader open
-window.open("https://en.savefrom.net/1-youtube-video-downloader/?url="+url,"_blank");
-
+window.open("https://www.ssyoutube.com/watch?v="+url.split("v=")[1]);
 }
-
 </script>
 
 </body>
