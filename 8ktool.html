@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>8K Video Upscaler</title>
+
+<style>
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.box{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+max-width:350px;
+margin:auto;
+}
+
+input{
+margin:10px;
+}
+
+button{
+padding:12px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+}
+
+video{
+width:100%;
+margin-top:15px;
+border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>🎬 8K Video Upscaler Tool</h2>
+
+<div class="box">
+
+<input type="file" id="videoFile">
+
+<br>
+
+<button onclick="convert()">Convert to 8K</button>
+
+<video id="preview" controls></video>
+
+<a id="download" style="display:block;margin-top:10px;color:#22c55e"></a>
+
+</div>
+
+<script>
+
+function convert(){
+
+let file = document.getElementById("videoFile").files[0];
+
+if(!file){
+alert("Video upload karo");
+return;
+}
+
+// preview
+let url = URL.createObjectURL(file);
+document.getElementById("preview").src = url;
+
+// fake upscale (demo)
+document.getElementById("download").innerText = "Download 8K Video";
+document.getElementById("download").href = url;
+
+alert("⚠️ Ye demo upscale hai. Real 8K ke liye server/AI chahiye.");
+
+}
+
+</script>
+
+</body>
+</html>
