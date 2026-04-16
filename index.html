@@ -1,214 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>🔥 Ashish Tools</title>
+<title>Video Downloader Pro</title>
 
 <style>
 body{
-margin:0;
 font-family:Arial;
-background:#0f0f0f;
+background:#0f172a;
 color:white;
-}
-
-/* TOP BAR */
-.top{
-padding:15px;
 text-align:center;
-font-size:20px;
-font-weight:bold;
-background:#111;
+padding:20px;
 }
 
-/* SEARCH */
-.search{
-padding:10px;
-text-align:center;
+.box{
+background:#1e293b;
+padding:30px;
+border-radius:15px;
+max-width:400px;
+margin:auto;
 }
 
-.search input{
+input{
 width:90%;
 padding:12px;
+margin:15px;
 border-radius:10px;
 border:none;
-outline:none;
 }
 
-/* GRID */
-.container{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-padding:10px;
+button{
+padding:12px;
+margin:5px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
-/* CARD */
-.card{
-background:#1c1c1c;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 0 10px rgba(255,255,255,0.05);
-transition:0.3s;
-}
-
-.card:hover{
-transform:scale(1.05);
-}
-
-.card img{
-width:100%;
-height:110px;
-object-fit:cover;
-}
-
-.card h3{
-font-size:14px;
-padding:5px;
-text-align:center;
-}
-
-.card a{
-display:block;
-padding:8px;
-background:#ff2d55;
-color:white;
-text-align:center;
-text-decoration:none;
-border-radius:0 0 15px 15px;
-}
+.red{background:#ef4444;color:white;}
+.blue{background:#3b82f6;color:white;}
+.green{background:#22c55e;color:white;}
 </style>
 
 </head>
 
 <body>
 
-<div class="top">🔥 Ashish Tools</div>
+<h2>🔥 Video Downloader Pro</h2>
 
-<div class="search">
-<input type="text" id="search" placeholder="Search Tools...">
+<div class="box">
+
+<input id="link" placeholder="Paste Video Link">
+
+<br>
+
+<button class="red" onclick="download()">Download Video</button>
+<button class="blue" onclick="mp3()">Download MP3</button>
+<button class="green" onclick="preview()">Preview</button>
+
 </div>
-
-<div class="container" id="box"></div>
 
 <script>
 
-  let tools = [
-{name:"Age Calculator", link:"age.html"},
-{name:"Percentage Calculator", link:"percentage.html"},
-{name:"BMI Calculator", link:"bmi.html"},
-{name:"EMI Calculator", link:"emi.html"},
-{name:"Simple Interest Calculator", link:"si.html"},
-{name:"Password Generator", link:"password.html"},
-{name:"Discount Calculator", link:"discount.html"},
-{name:"Loan Calculator", link:"loan.html"},
-{name:"Age Difference Calculator", link:"age-diff.html"},
-{name:"Currency Converter", link:"currency-195-full.html"},
-{name:"Trigonometry Calculator", link:"trigno.html"},
-{name:"Math Formula Finder", link:"math-formula.html"},
-{name:"PDF Tool", link:"pdf.html"},
-{name:"IPL Live Score", link:"ipl.html"},
-{name:"Face Enhance Tool", link:"face-enhance.html"},
-{name:"Word Counter", link:"word-counter.html"},
-{name:"SEO Tool", link:"seo-tool.html"},
-{name:"CGPA Calculator", link:"cgpa.html"},
-{name:"QR Generator", link:"qr.html"},
-{name:"Image Compressor", link:"compress-pro.html"},
-{name:"Unit Converter", link:"unit.html"},
-{name:"BG Remover", link:"bg-remover-pro.html"},
-{name:"Video to Audio", link:"video-to-audio.html"},
-{name:"Day Finder", link:"day-finder.html"},
-{name:"Typing Test", link:"typing.html"},
-{name:"Voice to Text", link:"voice.html"},
-{name:"Handwriting Tool", link:"handwriting-ultra.html"},
-{name:"Font Generator", link:"font-generator.html"},
-{name:"Insta Bio Generator", link:"insta-bio-mega.html"},
-{name:"Location QR Generator", link:"location-qr.html"},
-{name:"Weather Tool", link:"weather.html"},
-{name:"IP Finder", link:"ip.html"},
-{name:"Tourist Finder", link:"tourist-api.html"},
-{name:"Emoji Generator", link:"emoji-all-world.html"},
-{name:"Instagram Username Checker", link:"username.html"},
-{name:"YouTube Thumbnail Downloader", link:"thumbnail.html"},
-{name:"YouTube Tool", link:"ytpro.html"},
-{name:"YouTube Downloader", link:"ytdownload.html"},
-  ];
-
-
-  let box = document.getElementById("box");
-
-/* SHOW FUNCTION */
-function show(data){
-
-box.innerHTML = "";
-
-data.forEach(t=>{
-box.innerHTML += `
-<div class="card">
-<img src="https://via.placeholder.com/300x200?text=${t.name}">
-<h3>${t.name}</h3>
-<a href="${t.link}">Open</a>
-</div>
-`;
-});
-
+function download(){
+let url = document.getElementById("link").value;
+window.open("https://en.savefrom.net/1-youtube-video-downloader/?url="+url);
 }
 
-show(tools);
+function mp3(){
+let url = document.getElementById("link").value;
+window.open("https://en.savefrom.net/1-youtube-video-downloader/?url="+url);
+}
 
-/* SEARCH SYSTEM */
-document.getElementById("search").addEventListener("keyup", function(){
-
-let value = this.value.toLowerCase();
-
-let filtered = tools.filter(t =>
-t.name.toLowerCase().includes(value)
-);
-
-show(filtered);
-
-});
+function preview(){
+let url = document.getElementById("link").value;
+window.open(url);
+}
 
 </script>
 
 </body>
 </html>
-
-<style>
-body{
-user-select:none;
--webkit-user-select:none;
--moz-user-select:none;
-}
-</style>
-
-<script>
-document.addEventListener("contextmenu", function(e){
-e.preventDefault();
-});
-</script>
-
-<script>
-document.addEventListener("keydown", function(e){
-
-if(e.ctrlKey && (e.key === "u" || e.key === "c" || e.key === "s")){
-e.preventDefault();
-}
-
-});
-</script>
-
-<div style="
-position:fixed;
-bottom:10px;
-right:10px;
-background:black;
-color:white;
-padding:8px 12px;
-border-radius:10px;
-font-size:12px;
-opacity:0.6;
-z-index:9999;
-">
-© Ashish Tools Website
-</div>
-
