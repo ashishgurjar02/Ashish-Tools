@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ashish Tools - All In One Toolkit</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+margin:0;
+text-align:center;
+}
+
+h1{
+padding:20px;
+}
+
+.search{
+width:80%;
+max-width:400px;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-bottom:20px;
+}
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:10px;
+}
+
+.card{
+background:#1e293b;
+margin:10px;
+padding:15px;
+width:180px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+background:#334155;
+transform:scale(1.05);
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 Ashish Tools</h1>
+
+<input class="search" type="text" placeholder="Search tool..." onkeyup="searchTool(this.value)">
+
+<div class="container" id="tools">
+
+<a href="age.html"><div class="card">Age Difference Calculator</div></a>
+<a href="bgremove.html"><div class="card">Background Remover</div></a>
+<a href="bmi.html"><div class="card">BMI Calculator</div></a>
+<a href="cgpa.html"><div class="card">CGPA Calculator</div></a>
+<a href="compress.html"><div class="card">Image Compressor</div></a>
+<a href="currency.html"><div class="card">Currency Converter</div></a>
+<a href="date.html"><div class="card">Date to Day Finder</div></a>
+<a href="discount.html"><div class="card">Discount Calculator</div></a>
+<a href="emi.html"><div class="card">EMI Calculator</div></a>
+<a href="emoji.html"><div class="card">Emoji Generator</div></a>
+<a href="face.html"><div class="card">Face Enhance Tool</div></a>
+<a href="font.html"><div class="card">Font Generator</div></a>
+<a href="handwriting.html"><div class="card">Handwriting Generator</div></a>
+<a href="bio.html"><div class="card">Insta Bio Generator</div></a>
+<a href="ip.html"><div class="card">IP Finder</div></a>
+<a href="ipl.html"><div class="card">IPL Live Score</div></a>
+<a href="loan.html"><div class="card">Loan Calculator</div></a>
+<a href="qr-location.html"><div class="card">Location to QR</div></a>
+<a href="password.html"><div class="card">Password Generator</div></a>
+<a href="pdf.html"><div class="card">PDF Tool</div></a>
+<a href="percent.html"><div class="card">Percentage Calculator</div></a>
+<a href="qr.html"><div class="card">QR Generator</div></a>
+<a href="seo.html"><div class="card">SEO Tool</div></a>
+<a href="interest.html"><div class="card">Simple Interest</div></a>
+<a href="thumbnail.html"><div class="card">Thumbnail Downloader</div></a>
+<a href="tourist.html"><div class="card">Tourist Finder</div></a>
+<a href="trigo.html"><div class="card">Trigonometry Calculator</div></a>
+<a href="typing.html"><div class="card">Typing Speed Test</div></a>
+<a href="unit.html"><div class="card">Unit Converter</div></a>
+<a href="username.html"><div class="card">Instagram Username Checker</div></a>
+<a href="video-audio.html"><div class="card">Video to Audio</div></a>
+<a href="voice.html"><div class="card">Voice to Text</div></a>
+<a href="weather.html"><div class="card">Weather Tool</div></a>
+<a href="word.html"><div class="card">Word Counter</div></a>
+
+</div>
+
+<script>
+function searchTool(value){
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+if(card.innerText.toLowerCase().includes(value.toLowerCase())){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+</script>
+
+</body>
+</html>
