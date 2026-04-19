@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ashish Tools - All In One</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+margin:0;
+text-align:center;
+}
+
+h1{
+padding:20px;
+}
+
+.search{
+width:80%;
+max-width:400px;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-bottom:20px;
+}
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:10px;
+}
+
+.card{
+background:#1e293b;
+margin:10px;
+padding:15px;
+width:180px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+background:#334155;
+transform:scale(1.05);
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 Ashish Tools</h1>
+
+<input class="search" type="text" placeholder="Search tool..." onkeyup="searchTool(this.value)">
+
+<div class="container">
+
+<a href="#"><div class="card">Age Difference Calculator</div></a>
+<a href="#"><div class="card">Background Remover</div></a>
+<a href="#"><div class="card">BMI Calculator</div></a>
+<a href="#"><div class="card">CGPA Calculator</div></a>
+<a href="#"><div class="card">Image Compressor</div></a>
+<a href="#"><div class="card">Currency Converter</div></a>
+<a href="#"><div class="card">Date to Day Finder</div></a>
+<a href="#"><div class="card">Discount Calculator</div></a>
+<a href="#"><div class="card">EMI Calculator</div></a>
+<a href="#"><div class="card">Emoji Generator</div></a>
+<a href="#"><div class="card">Face Enhance Tool</div></a>
+<a href="#"><div class="card">Font Generator</div></a>
+<a href="#"><div class="card">Handwriting Generator</div></a>
+<a href="#"><div class="card">Insta Bio Generator</div></a>
+<a href="#"><div class="card">IP Finder</div></a>
+<a href="#"><div class="card">IPL Live Score</div></a>
+<a href="#"><div class="card">Loan Calculator</div></a>
+<a href="#"><div class="card">Location to QR Code</div></a>
+<a href="#"><div class="card">Password Generator</div></a>
+<a href="#"><div class="card">PDF Tool</div></a>
+<a href="#"><div class="card">Percentage Calculator</div></a>
+<a href="#"><div class="card">QR Code Generator</div></a>
+<a href="#"><div class="card">SEO Tool</div></a>
+<a href="#"><div class="card">Simple Interest Calculator</div></a>
+<a href="#"><div class="card">Thumbnail Downloader</div></a>
+<a href="#"><div class="card">Tourist Finder</div></a>
+<a href="#"><div class="card">Trigonometry Calculator</div></a>
+<a href="#"><div class="card">Typing Speed Test</div></a>
+<a href="#"><div class="card">Unit Converter</div></a>
+<a href="#"><div class="card">Instagram Username Checker</div></a>
+<a href="#"><div class="card">Video to Audio Converter</div></a>
+<a href="#"><div class="card">Voice to Text</div></a>
+<a href="#"><div class="card">Weather Tool</div></a>
+<a href="#"><div class="card">Word Counter</div></a>
+
+</div>
+
+<script>
+function searchTool(value){
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+if(card.innerText.toLowerCase().includes(value.toLowerCase())){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+</script>
+
+</body>
+</html>
